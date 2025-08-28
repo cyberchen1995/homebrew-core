@@ -19,7 +19,7 @@ class Cmus < Formula
 
   depends_on "pkgconf" => :build
   depends_on "faad2"
-  depends_on "ffmpeg@7"
+  depends_on "ffmpeg@7" # FFmpeg 8 issue: https://github.com/cmus/cmus/issues/1446
   depends_on "flac"
   depends_on "libao" # See https://github.com/cmus/cmus/issues/1130
   depends_on "libcue"
