@@ -1,8 +1,8 @@
 class Gcx < Formula
   desc "CLI for managing Grafana Cloud resources"
   homepage "https://github.com/grafana/gcx"
-  url "https://github.com/grafana/gcx/archive/refs/tags/v0.5.0.tar.gz"
-  sha256 "689822b98e5bafb0392133397240892bfa0f4ce1cbe602a7ae471bf4c928d60e"
+  url "https://github.com/grafana/gcx/archive/refs/tags/v0.6.0.tar.gz"
+  sha256 "52e4b90a3f02cb524cdfa042b000a5c5e3b28c9caa7b6e196d365c435aea3f1a"
   license "Apache-2.0"
   head "https://github.com/grafana/gcx.git", branch: "main"
 
@@ -32,7 +32,7 @@ class Gcx < Formula
   test do
     assert_match version.to_s, shell_output("#{bin}/gcx --version")
 
-    system bin/"gcx", "config", "set", "grafana.server", "https://grafana.example.net"
+    system bin/"gcx", "config", "set", "stacks.test.grafana.server", "https://grafana.example.net"
     assert_match "https://grafana.example.net", shell_output("#{bin}/gcx config view")
 
     assert_match "Unknown output format", shell_output("#{bin}/gcx commands --output bogus 2>&1", 1)
