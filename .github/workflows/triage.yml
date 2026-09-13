@@ -329,23 +329,6 @@ jobs:
               keep_if_no_match: true
               allow_any_match: true
 
-            - label: long dependent tests
-              path: "Formula/.+/(\
-                boost|\
-                cmake|\
-                freetype|\
-                gtk\\+3|\
-                jpeg-turbo|\
-                libpng|\
-                node|\
-                pango|\
-                pcre2|\
-                readline|\
-                zstd\
-                ).rb"
-              keep_if_no_match: true
-              allow_any_match: true
-
             - label: CI-parallel-dependents
               path: "Formula/.+/(\
                 cabal-install|\
@@ -392,6 +375,7 @@ jobs:
 
             - label: CI-linux-self-hosted
               path: "Formula/.+/(\
+                graph-tool|\
                 qt@5|\
                 qtwebengine|\
                 texlive\
@@ -417,7 +401,7 @@ jobs:
 
             - label: shell-completion
               path: Formula/.+
-              patch_content: (generate_completions_from_executable|bash_completion|zsh_completion|fish_completion|pwsh_completion)
+              patch_content: '\n[-+].*(generate_completions_from_executable|bash_completion|zsh_completion|fish_completion|pwsh_completion)'
 
   # Handle this separately since the `workflows` label affects bottle cache usage
   # and hardens us against cache poisoning attacks.
